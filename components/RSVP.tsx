@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function RSVP(){
-  const [f,setF]=useState({n:'',p:'',m:''});
+  const [f,setF]=useState({n:'',p:'',e:'',m:''});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -20,6 +20,7 @@ export default function RSVP(){
         body: JSON.stringify({
           name: f.n,
           phone: f.p,
+          email: f.e,
           message: f.m
         })
       });
@@ -29,7 +30,7 @@ export default function RSVP(){
       }
 
       setSubmitted(true);
-      setF({n:'',p:'',m:''});
+      setF({n:'',p:'',e:'',m:''});
       setTimeout(() => setSubmitted(false), 5000);
     } catch (err) {
       setError('Failed to submit. Please try again.');
@@ -91,6 +92,21 @@ export default function RSVP(){
             value={f.p}
             onChange={e=>setF({...f,p:e.target.value})}
             required
+            style={{
+              width:'100%',
+              padding:12,
+              marginBottom:15,
+              background:'rgba(255,255,255,0.05)',
+              border:'1px solid rgba(120,80,200,0.3)',
+              borderRadius:6,
+              color:'white',
+              boxSizing:'border-box'
+            }}/>
+          <input 
+            placeholder='Email Address (optional)' 
+            type='email'
+            value={f.e}
+            onChange={e=>setF({...f,e:e.target.value})}
             style={{
               width:'100%',
               padding:12,
