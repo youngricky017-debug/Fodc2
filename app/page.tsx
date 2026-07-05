@@ -15,7 +15,6 @@ export default function Page() {
       <div className='bg' />
       <Particles />
       <Hero />
-      <Countdown />
       <LoveStory />
       <Gallery />
       <Timeline />
@@ -23,6 +22,7 @@ export default function Page() {
       <RSVP />
       <GuestList />
       <FAQ />
+      <Countdown />
     </>
   );
 }
